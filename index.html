@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SALMAN</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
+height:100vh;
+overflow:hidden;
+display:flex;
+justify-content:center;
+align-items:center;
+background:#040814;
+font-family:'Orbitron',sans-serif;
+position:relative;
+color:white;
+}
+
+/* Animated Gradient */
+
+.bg{
+position:absolute;
+width:200%;
+height:200%;
+background:
+radial-gradient(circle at top left,#00f7ff22,transparent 30%),
+radial-gradient(circle at bottom right,#ff00ff22,transparent 30%),
+radial-gradient(circle at center,#00ff8822,transparent 25%);
+animation:bgMove 15s linear infinite;
+}
+
+@keyframes bgMove{
+0%{
+transform:translate(0,0) rotate(0deg);
+}
+100%{
+transform:translate(-120px,-80px) rotate(5deg);
+}
+}
+
+/* Floating Glow */
+
+.glow{
+position:absolute;
+border-radius:50%;
+filter:blur(60px);
+opacity:.35;
+animation:float 8s ease-in-out infinite;
+}
+
+.glow1{
+width:250px;
+height:250px;
+background:#00f7ff;
+top:-50px;
+left:-50px;
+}
+
+.glow2{
+width:250px;
+height:250px;
+background:#ff00ff;
+bottom:-50px;
+right:-50px;
+animation-delay:2s;
+}
+
+@keyframes float{
+0%,100%{
+transform:translateY(0px);
+}
+50%{
+transform:translateY(-25px);
+}
+}
+
+/* Card */
+
+.container{
+position:relative;
+z-index:10;
+width:90%;
+max-width:520px;
+padding:35px 25px;
+border-radius:30px;
+background:rgba(255,255,255,0.05);
+backdrop-filter:blur(18px);
+border:1px solid rgba(255,255,255,0.1);
+box-shadow:
+0 0 30px rgba(0,255,255,.15),
+0 0 60px rgba(255,0,255,.12);
+text-align:center;
+animation:cardFloat 5s ease-in-out infinite;
+}
+
+@keyframes cardFloat{
+0%,100%{
+transform:translateY(0px);
+}
+50%{
+transform:translateY(-10px);
+}
+}
+
+/* Salman Text */
+
+.title{
+font-size:clamp(45px,14vw,100px);
+font-weight:700;
+letter-spacing:8px;
+position:relative;
+animation:flicker 2s infinite alternate;
+word-break:break-word;
+}
+
+.title::before,
+.title::after{
+content:'SALMAN';
+position:absolute;
+left:0;
+top:0;
+width:100%;
+overflow:hidden;
+}
+
+.title::before{
+color:#00f7ff;
+z-index:-1;
+animation:glitch1 .8s infinite;
+}
+
+.title::after{
+color:#ff00ff;
+z-index:-2;
+animation:glitch2 .8s infinite;
+}
+
+@keyframes glitch1{
+0%{transform:translate(0);}
+25%{transform:translate(-3px,2px);}
+50%{transform:translate(3px,-2px);}
+75%{transform:translate(-2px,-2px);}
+100%{transform:translate(0);}
+}
+
+@keyframes glitch2{
+0%{transform:translate(0);}
+25%{transform:translate(3px,-2px);}
+50%{transform:translate(-3px,2px);}
+75%{transform:translate(2px,2px);}
+100%{transform:translate(0);}
+}
+
+@keyframes flicker{
+0%{
+text-shadow:
+0 0 10px #00f7ff,
+0 0 20px #00f7ff;
+}
+100%{
+text-shadow:
+0 0 20px #ff00ff,
+0 0 40px #ff00ff;
+}
+}
+
+/* Subtitle */
+
+.subtitle{
+margin-top:15px;
+font-size:14px;
+letter-spacing:4px;
+color:#ccc;
+animation:pulse 2s infinite;
+}
+
+@keyframes pulse{
+0%,100%{
+opacity:.5;
+}
+50%{
+opacity:1;
+}
+}
+
+/* Buttons */
+
+.buttons{
+margin-top:30px;
+display:flex;
+justify-content:center;
+gap:15px;
+flex-wrap:wrap;
+}
+
+button,a.btn{
+padding:14px 24px;
+border:none;
+border-radius:15px;
+background:linear-gradient(45deg,#00f7ff,#ff00ff);
+color:white;
+font-size:14px;
+cursor:pointer;
+transition:.3s;
+font-family:'Orbitron',sans-serif;
+text-decoration:none;
+}
+
+button:hover,
+a.btn:hover{
+transform:scale(1.08);
+box-shadow:
+0 0 20px #00f7ff,
+0 0 40px #ff00ff;
+}
+
+/* Contact */
+
+.contact{
+margin-top:30px;
+padding:15px;
+border-radius:20px;
+background:rgba(255,255,255,0.04);
+font-size:14px;
+line-height:1.8;
+}
+
+.contact a{
+color:#00f7ff;
+text-decoration:none;
+}
+
+/* Clock */
+
+.clock{
+margin-top:20px;
+font-size:18px;
+color:#00f7ff;
+letter-spacing:3px;
+}
+
+/* Music Bars */
+
+.music{
+margin-top:25px;
+display:flex;
+justify-content:center;
+align-items:flex-end;
+gap:5px;
+height:40px;
+}
+
+.bar{
+width:6px;
+border-radius:10px;
+background:white;
+animation:music 1s infinite ease-in-out;
+}
+
+.bar:nth-child(2){animation-delay:.2s;}
+.bar:nth-child(3){animation-delay:.4s;}
+.bar:nth-child(4){animation-delay:.6s;}
+.bar:nth-child(5){animation-delay:.8s;}
+
+@keyframes music{
+0%,100%{
+height:10px;
+}
+50%{
+height:40px;
+}
+}
+
+/* Particles */
+
+.particle{
+position:absolute;
+width:3px;
+height:3px;
+background:white;
+border-radius:50%;
+opacity:.5;
+animation:particles linear infinite;
+}
+
+@keyframes particles{
+0%{
+transform:translateY(100vh) scale(0);
+opacity:0;
+}
+10%{
+opacity:1;
+}
+100%{
+transform:translateY(-10vh) scale(1.5);
+opacity:0;
+}
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="bg"></div>
+
+<div class="glow glow1"></div>
+<div class="glow glow2"></div>
+
+<div class="container">
+
+<div class="title">
+SALMAN
+</div>
+
+<div class="subtitle">
+WELCOME TO MY WORLD
+</div>
+
+<div class="clock" id="clock">
+00:00:00
+</div>
+
+<div class="music">
+<div class="bar"></div>
+<div class="bar"></div>
+<div class="bar"></div>
+<div class="bar"></div>
+<div class="bar"></div>
+</div>
+
+<div class="buttons">
+
+<button onclick="boom()">
+ENTER
+</button>
+
+<a class="btn" href="https://t.me/irsalman" target="_blank">
+TELEGRAM
+</a>
+
+</div>
+
+<div class="contact">
+📩 Telegram ID:<br>
+<a href="https://t.me/irsalman" target="_blank">
+@irsalman
+</a>
+</div>
+
+</div>
+
+<script>
+
+/* Particles */
+
+for(let i=0;i<120;i++){
+
+let p=document.createElement('div');
+
+p.classList.add('particle');
+
+p.style.left=Math.random()*100+'vw';
+
+p.style.animationDuration=
+(Math.random()*5+3)+'s';
+
+p.style.animationDelay=
+Math.random()*5+'s';
+
+document.body.appendChild(p);
+}
+
+/* Button Effect */
+
+function boom(){
+
+navigator.vibrate?.(150);
+
+document.body.animate([
+{transform:'scale(1)'},
+{transform:'scale(1.03)'},
+{transform:'scale(1)'}
+],{
+duration:500
+});
+
+}
+
+/* Live Clock */
+
+function updateClock(){
+
+const now=new Date();
+
+let h=String(now.getHours()).padStart(2,'0');
+let m=String(now.getMinutes()).padStart(2,'0');
+let s=String(now.getSeconds()).padStart(2,'0');
+
+document.getElementById('clock').innerHTML=
+h + ":" + m + ":" + s;
+
+}
+
+setInterval(updateClock,1000);
+
+updateClock();
+
+</script>
+
+</body>
+</html>
